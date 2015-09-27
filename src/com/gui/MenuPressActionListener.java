@@ -13,6 +13,8 @@ public class MenuPressActionListener extends PressListener {
 	private MenuButtonType menuButtonType;
 
 	private JMenuItem menuItem;
+	
+	private String testName;
 
 	public JMenuItem getMenuItem() {
 		return menuItem;
@@ -37,11 +39,17 @@ public class MenuPressActionListener extends PressListener {
 				
 		case NEW:
 			JOptionPane optionPane = new JOptionPane();
-			optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-			String testName = optionPane.showInputDialog("Please, input the name of the test!");
-			if (testName == null || testName.equals("")) {
-                JOptionPane.showMessageDialog(null, "No input.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+			try {
+				while (!testName.equals("")) {
+					testName = optionPane.showInputDialog("Please, input the name of the test!");
+					optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+				}
+				if (testName == null || testName.equals("")) {
+	                JOptionPane.showMessageDialog(null, "No input.", "Error", JOptionPane.ERROR_MESSAGE);
+	            }
+			} catch (Exception e2) {
+				optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+			}
 			TestDataController.getInstance().setTestName(testName);
 			MainWindow.getFrames()[0].setTitle(testName);
 			UIChangeListener.onNewTestPressed();
