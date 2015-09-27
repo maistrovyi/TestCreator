@@ -62,6 +62,7 @@ public class MainWindow extends JFrame implements UIControlable {
 		build();
 
 	}
+	
 
 	private void build() {
 		setResizable(false);
