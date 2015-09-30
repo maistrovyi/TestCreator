@@ -1,4 +1,4 @@
-# TestCreatorProject
+# Test Creator 
  Software "Test Creator"
  
  Description: "Test Creator" provide in a program to create tests and record them in a file format * .json.
