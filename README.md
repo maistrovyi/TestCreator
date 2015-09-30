@@ -5,4 +5,4 @@
  
  Details:
   1) Minimum number of characters to create a new question - 10;
-  2) Maximum number of answers - 9;
+  <br>2) Maximum number of answers - 9;</br>
