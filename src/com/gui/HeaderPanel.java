@@ -12,9 +12,9 @@ public abstract class HeaderPanel extends BasePanelLayout implements Validatable
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	private JLabel displayLabel;
+	private static final long serialVersionUID = 2760349123379119442L;
+	
+	protected JLabel displayLabel;
 
 	public HeaderPanel(String title) {
 		super();

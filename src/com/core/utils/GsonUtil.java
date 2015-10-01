@@ -11,6 +11,8 @@ import com.model.TestModel;
 
 public class GsonUtil {
 
+	public static String path = "e:\\file.json";
+
 	public static void saveGsonTestToFile() {
 
 		Gson gson = new Gson();
@@ -18,16 +20,13 @@ public class GsonUtil {
 		String json = gson.toJson(TestDataController.getInstance().getTest());
 
 		try {
-			FileWriter writer = new FileWriter("e:\\file.json");
+			FileWriter writer = new FileWriter(path);
 			writer.write(json);
 			writer.close();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println(json);
-
 	}
 
 	public static void retrieveTestModelFromJson() {
@@ -39,8 +38,6 @@ public class GsonUtil {
 			BufferedReader br = new BufferedReader(new FileReader("e:\\file.json"));
 
 			TestModel obj = gson.fromJson(br, TestModel.class);
-
-			System.out.println(obj);
 
 		} catch (IOException e) {
 			e.printStackTrace();

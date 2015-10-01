@@ -6,7 +6,9 @@ public enum MenuButtonType {
 	
 	OPEN("Open"),
 	
-	EXIT("Exit");
+	EXIT("Exit"),
+	
+	ABOUT("About");
 	
 	private String menuTypeName;
 	
@@ -21,6 +23,4 @@ public enum MenuButtonType {
 	public void setMenuTypeName(String menuTypeName) {
 		this.menuTypeName = menuTypeName;
 	}
-	
-	
 }

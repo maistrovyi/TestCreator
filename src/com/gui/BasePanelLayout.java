@@ -18,17 +18,15 @@ public class BasePanelLayout extends JPanel {
 
 	protected static final String DEFAULT_DISPLAY_LAYOUT_VALUE = "No Question";
 	
-	protected static final String QUESTION_TITLE = "Question is : ";
+	protected static final String QUESTION_TITLE = "Question ";
 	
 	protected static final String QUESTION_UNSW_NUM_TITLE = "Unswers number is : ";
 
 	protected static final Border LINE_BORDER = BorderFactory.createLineBorder(Color.DARK_GRAY);
 	
-	protected static final Border TITLE_BORDER = BorderFactory.createTitledBorder("CCCC");
-	
 	protected static final Border OTHER_BORDER = BorderFactory.createCompoundBorder();
 	
-	protected static final Font FONT = new Font("Comic Sanc", Font.BOLD, 24);
+	protected static final Font FONT = new Font("Comic Sanc", Font.BOLD, 18);
 
 	public BasePanelLayout() {
 		super();

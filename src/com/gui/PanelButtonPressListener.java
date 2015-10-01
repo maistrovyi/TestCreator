@@ -65,6 +65,7 @@ public class PanelButtonPressListener extends PressListener {
 		this.navButtonType = navButtonType;
 		button = new JButton(navButtonType.getButtonTypeName());
 		button.addActionListener(this);
+		button.setEnabled(false);
 	}
 
 }

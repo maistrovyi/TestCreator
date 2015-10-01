@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.core.QuastionChackable;
@@ -25,6 +26,7 @@ public class HeaderTextArea extends HeaderPanel {
     public HeaderTextArea(String title, int size) {
 		super(title);
         questionArea = new JTextArea();
+        JScrollPane scroll = new JScrollPane(questionArea);
         questionArea.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -68,6 +70,8 @@ public class HeaderTextArea extends HeaderPanel {
 
     public void prepareNextQuestion() {
 	    questionArea.setText("");
+	    displayLabel.setText(QUESTION_TITLE+(MainWindow.counter+1));
 	}
+    
     
 }
