@@ -38,12 +38,15 @@ public class MenuPressActionListener extends PressListener {
 			JOptionPane optionPane = new JOptionPane();
 			optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
 			String testName = optionPane.showInputDialog("Please, input the name of the test!");
+			if (testName == null){
+				return;
+			}
 			if (testName.equals("")) {
 				JOptionPane.showMessageDialog(optionPane, "Please, input correct name of the test!", "Error message", JOptionPane.ERROR_MESSAGE);
 			} else {
-			TestDataController.getInstance().setTestName(testName);
-			MainWindow.getFrames()[0].setTitle(testName);
-			UIChangeListener.onNewTestPressed();
+				TestDataController.getInstance().setTestName(testName);
+				MainWindow.getFrames()[0].setTitle(testName);
+				UIChangeListener.onNewTestPressed();
 			}
 			break;
 
