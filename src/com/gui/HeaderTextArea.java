@@ -26,6 +26,11 @@ public class HeaderTextArea extends HeaderPanel {
     public HeaderTextArea(String title, int size) {
 		super(title);
         questionArea = new JTextArea();
+        questionArea.setColumns(40);
+        questionArea.setRows(2);
+        questionArea.setLineWrap(false);
+        questionArea.setWrapStyleWord(true);
+        questionArea.setLineWrap(true);
         JScrollPane scroll = new JScrollPane(questionArea);
         questionArea.addKeyListener(new KeyListener() {
 			
@@ -51,7 +56,7 @@ public class HeaderTextArea extends HeaderPanel {
         questionArea.setOpaque(true);
         questionArea.setBackground(Color.WHITE);
         questionArea.setFont(FONT);
-        add(questionArea, BorderLayout.NORTH);
+        add(scroll, BorderLayout.NORTH);
 	}
 
     public void setOnQuestionLenghtMore10(QuastionChackable callback) {
@@ -70,7 +75,7 @@ public class HeaderTextArea extends HeaderPanel {
 
     public void prepareNextQuestion() {
 	    questionArea.setText("");
-	    displayLabel.setText(QUESTION_TITLE+(MainWindow.counter+1));
+	    displayLabel.setText(QUESTION_TITLE + (MainWindow.counter + 1));
 	}
     
     
