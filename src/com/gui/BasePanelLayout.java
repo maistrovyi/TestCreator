@@ -20,7 +20,7 @@ public class BasePanelLayout extends JPanel {
 	
 	protected static final String QUESTION_TITLE = "Question ";
 	
-	protected static final String QUESTION_UNSW_NUM_TITLE = "Unswers number is : ";
+	protected static final String QUESTION_UNSW_NUM_TITLE = "Answers number is : ";
 
 	protected static final Border LINE_BORDER = BorderFactory.createLineBorder(Color.DARK_GRAY);
 	

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import com.core.TestDataController;
 import com.google.gson.Gson;
 import com.model.TestModel;
@@ -34,15 +33,11 @@ public class GsonUtil {
 		Gson gson = new Gson();
 
 		try {
-
 			BufferedReader br = new BufferedReader(new FileReader("e:\\file.json"));
 
 			TestModel obj = gson.fromJson(br, TestModel.class);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
