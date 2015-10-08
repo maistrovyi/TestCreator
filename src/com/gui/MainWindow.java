@@ -91,7 +91,6 @@ public class MainWindow extends JFrame implements UIControlable {
 					fullPanel.doubleHeaderPanel.getAnswerNumber());
 			newQuestion.setContainer(fullPanel.body.answerPanel.getAnswers());
 			int correctIndex = fullPanel.body.shooserPanel.getCorrectAnswer();
-//			fullPanel.doubleHeaderPanel.question.
 			newQuestion.setCorrectAnswer(correctIndex);
 			TestDataController.getInstance().addNewQuestion(newQuestion);
 			prepare();
@@ -142,7 +141,6 @@ public class MainWindow extends JFrame implements UIControlable {
 
 	@Override
 	public void onQuestionLenghtMore10() {
-		//fullPanel.footerPanel.enableButtons(true);
 	}
 
 	@Override

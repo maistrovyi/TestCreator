@@ -3,10 +3,10 @@ package com.gui;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import com.core.QuastionChackable;
+import com.core.QuestionChackable;
 import com.core.UIControlable;
 
-public class DoubleHeaderPanel extends BasePanelLayout implements QuastionChackable {
+public class DoubleHeaderPanel extends BasePanelLayout implements QuestionChackable {
 
 	/**
 	 * 

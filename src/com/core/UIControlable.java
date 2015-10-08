@@ -1,6 +1,6 @@
 package com.core;
 
-public interface UIControlable extends Inputable, QuastionChackable {
+public interface UIControlable extends Inputable, QuestionChackable {
 	
 	void onNewTestPressed();
 	

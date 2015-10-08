@@ -8,7 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import com.core.QuastionChackable;
+import com.core.QuestionChackable;
 
 public class HeaderTextArea extends HeaderPanel {
 	
@@ -21,7 +21,7 @@ public class HeaderTextArea extends HeaderPanel {
 	
 	private static final int MIN_QUESTION_LENGTH = 10;
 	
-	private QuastionChackable callback;
+	private QuestionChackable callback;
 	
     public HeaderTextArea(String title, int size) {
 		super(title);
@@ -59,7 +59,7 @@ public class HeaderTextArea extends HeaderPanel {
         add(scroll, BorderLayout.NORTH);
 	}
 
-    public void setOnQuestionLenghtMore10(QuastionChackable callback) {
+    public void setOnQuestionLenghtMore10(QuestionChackable callback) {
 		this.callback = callback;
 	}
 
