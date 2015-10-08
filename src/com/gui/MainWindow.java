@@ -49,7 +49,6 @@ public class MainWindow extends JFrame implements UIControlable {
 	}
 
 	private void createNavButton() {
-
 	}
 
 	private void setupMainWindowWithMenu() {
