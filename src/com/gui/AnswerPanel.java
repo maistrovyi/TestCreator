@@ -16,13 +16,13 @@ public class AnswerPanel extends HeaderPanel {
 	JTable table;
 
 	int rowsNum;
-	
+
 	ArrayList<String> answers = new ArrayList<>();
 
 	public AnswerPanel(String title, int num) {
 		super(title);
 		rowsNum = num;
-		table = new JTable(num , 2) {
+		table = new JTable(num, 2) {
 			/**
 			 * 
 			 */
@@ -32,7 +32,7 @@ public class AnswerPanel extends HeaderPanel {
 			public boolean isCellEditable(int row, int column) {
 				return column == 0 ? false : true;
 			}
-
+			
 			@Override
 			public void setRowHeight(int rowHeight) {
 				super.setRowHeight(20);
@@ -49,8 +49,8 @@ public class AnswerPanel extends HeaderPanel {
 			table.setValueAt(i, i - 1, 0);
 		}
 		table.setTableHeader(null);
-//		table.getColumnModel().getColumn(0).setPreferredWidth(34);
-//		table.getColumnModel().getColumn(1).setPreferredWidth(534);
+		 table.getColumnModel().getColumn(0).setPreferredWidth(25);
+		 table.getColumnModel().getColumn(1).setPreferredWidth(410);
 	}
 
 	public boolean validateValue() {

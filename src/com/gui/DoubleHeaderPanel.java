@@ -3,10 +3,10 @@ package com.gui;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import com.core.QuastionChackable;
+import com.core.QuestionChackable;
 import com.core.UIControlable;
 
-public class DoubleHeaderPanel extends BasePanelLayout implements QuastionChackable {
+public class DoubleHeaderPanel extends BasePanelLayout implements QuestionChackable {
 
 	/**
 	 * 
@@ -16,16 +16,19 @@ public class DoubleHeaderPanel extends BasePanelLayout implements QuastionChacka
 	HeaderPanel question;
 
 	HeaderPanel qNum;
+	
+	UIControlable uiListener;
 
 	public DoubleHeaderPanel(UIControlable uiListener) {
 		super();
+		this.uiListener = uiListener;
 		setLayout(new GridLayout(2, 2, 5, 5));
-		question = new HeaderTextArea(QUESTION_TITLE, 100);
+		question = new HeaderTextArea(QUESTION_TITLE + 1, 100);
+		question.setSize(getMaximumSize());
 		((HeaderTextArea) question).setOnQuestionLenghtMore10(this);
-		qNum = new HeaderTestField(QUESTION_UNSW_NUM_TITLE, 100, uiListener);
+		qNum = new HeaderTestField(QUESTION_UNSW_NUM_TITLE, 4000, uiListener);
 		add(question, BorderLayout.NORTH);
 		add(qNum, BorderLayout.CENTER);
-
 	}
 	
 	public void prepareToNext() {
@@ -36,11 +39,13 @@ public class DoubleHeaderPanel extends BasePanelLayout implements QuastionChacka
 	@Override
 	public void onQuestionLenghtMore10() {
 		((HeaderTestField) qNum).setTextEnabled(true);
+		uiListener.onQuestionLenghtMore10();
 	}
 
 	@Override
 	public void onQuestionLenghtLess10() {
 		((HeaderTestField) qNum).setTextEnabled(false);
+		uiListener.onQuestionLenghtLess10();
 	}
 
 	public String getQuestion() {

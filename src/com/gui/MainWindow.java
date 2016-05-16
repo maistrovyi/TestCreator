@@ -1,12 +1,13 @@
 package com.gui;
 
+import java.awt.Toolkit;
+import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import com.core.TestDataController;
 import com.core.UIControlable;
 import com.core.utils.GsonUtil;
@@ -19,12 +20,16 @@ public class MainWindow extends JFrame implements UIControlable {
 	private static final long serialVersionUID = 1L;
 
 	TestPanel fullPanel;
+
 	JMenuBar menuBar = new JMenuBar();
+
 	JMenu menu = getFileMenu();
-	JTextField field;
+
 	JOptionPane optionPane;
 
-	public int counter = 1; // using by button "next"
+	private Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+	static int counter = 1;
 
 	private JMenu getFileMenu() {
 		JMenu menu = new JMenu("File");
@@ -37,22 +42,27 @@ public class MainWindow extends JFrame implements UIControlable {
 		return menu;
 	}
 
-	private void createNavButton() {
+	private JMenu getHelpMenu() {
+		JMenu help = new JMenu("Help");
+		help.add(new MenuPressActionListener(MenuButtonType.ABOUT, this).getMenuItem());
+		return help;
+	}
 
+	private void createNavButton() {
 	}
 
 	private void setupMainWindowWithMenu() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1000, 710);
 		setLocationRelativeTo(null);
-
 		super.setJMenuBar(menuBar);
 		menuBar.add(getFileMenu());
+		menuBar.add(getHelpMenu());
 	}
 
 	public MainWindow() {
-		super("TestCreator");
-
+		super("Test Creator");
+		setIconImage(toolkit.getImage("resources" + File.separator + "images/icon.png"));
 		setupMainWindowWithMenu();
 	}
 
@@ -70,7 +80,6 @@ public class MainWindow extends JFrame implements UIControlable {
 	}
 
 	private void configure() {
-		// putFrameInTheCenterOfTheScreen();
 	}
 
 	@Override
@@ -88,12 +97,14 @@ public class MainWindow extends JFrame implements UIControlable {
 		}
 	}
 
-	private void prepare(){
+	private void prepare() {
 		fullPanel.remove(fullPanel.body);
 		fullPanel.doubleHeaderPanel.prepareToNext();
+		onQuestionLenghtLess10();
 		revalidate();
 		repaint();
 	}
+
 	private void checkSelectedCorrectAnser() {
 		fullPanel.body.shooserPanel.validateValue();
 	}
@@ -103,17 +114,36 @@ public class MainWindow extends JFrame implements UIControlable {
 
 	}
 
-	@Override
-	public void onFinishTestPressed() {
-		onNextTestPressed();
-		GsonUtil.saveGsonTestToFile();
+	private void finishMessage() {
+		JOptionPane jOptionPane = new JOptionPane();
+		JOptionPane.showMessageDialog(this, "Your file is here: " + GsonUtil.path, "Completed!",
+				JOptionPane.INFORMATION_MESSAGE);
 		System.exit(0);
 	}
 
 	@Override
+	public void onFinishTestPressed() {
+		if (fullPanel.body.answerPanel.validateValue()) {
+		onNextTestPressed();
+		GsonUtil.saveGsonTestToFile();
+		finishMessage();
+		}
+	}
+
+	@Override
 	public void onNumUnswersInput(int num) {
+		fullPanel.footerPanel.enableButtons(true);
 		fullPanel.createTestBodyPart(num);
 		repaint();
 		revalidate();
+	}
+
+	@Override
+	public void onQuestionLenghtMore10() {
+	}
+
+	@Override
+	public void onQuestionLenghtLess10() {
+		fullPanel.footerPanel.enableButtons(false);
 	}
 }

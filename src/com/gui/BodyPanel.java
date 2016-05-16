@@ -18,7 +18,7 @@ public class BodyPanel extends HeaderPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		answerPanel = new AnswerPanel("", num);
 		add(answerPanel);
-		shooserPanel = new CorrectAnswerPanel("Choose Number of correct answer", num);
+		shooserPanel = new CorrectAnswerPanel("Choose number of correct answer", num);
 		add(shooserPanel);
 	}
 

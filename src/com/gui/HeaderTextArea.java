@@ -5,9 +5,10 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import com.core.QuastionChackable;
+import com.core.QuestionChackable;
 
 public class HeaderTextArea extends HeaderPanel {
 	
@@ -20,11 +21,17 @@ public class HeaderTextArea extends HeaderPanel {
 	
 	private static final int MIN_QUESTION_LENGTH = 10;
 	
-	private QuastionChackable callback;
+	private QuestionChackable callback;
 	
     public HeaderTextArea(String title, int size) {
 		super(title);
         questionArea = new JTextArea();
+        questionArea.setColumns(40);
+        questionArea.setRows(2);
+        questionArea.setLineWrap(false);
+        questionArea.setWrapStyleWord(true);
+        questionArea.setLineWrap(true);
+        JScrollPane scroll = new JScrollPane(questionArea);
         questionArea.addKeyListener(new KeyListener() {
 			
 			@Override
@@ -49,10 +56,10 @@ public class HeaderTextArea extends HeaderPanel {
         questionArea.setOpaque(true);
         questionArea.setBackground(Color.WHITE);
         questionArea.setFont(FONT);
-        add(questionArea, BorderLayout.NORTH);
+        add(scroll, BorderLayout.NORTH);
 	}
 
-    public void setOnQuestionLenghtMore10(QuastionChackable callback) {
+    public void setOnQuestionLenghtMore10(QuestionChackable callback) {
 		this.callback = callback;
 	}
 
@@ -68,6 +75,8 @@ public class HeaderTextArea extends HeaderPanel {
 
     public void prepareNextQuestion() {
 	    questionArea.setText("");
+	    displayLabel.setText(QUESTION_TITLE + (MainWindow.counter + 1));
 	}
+    
     
 }

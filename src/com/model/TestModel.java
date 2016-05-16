@@ -45,7 +45,6 @@ public class TestModel {
 	
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return testName.length()*(testName.length() > 2 ? testName.indexOf(3): testName.charAt(0));
 	}
 	
